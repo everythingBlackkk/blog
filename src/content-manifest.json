@@ -1,0 +1,668 @@
+[
+  {
+    "slug": "web-security-file-upload-vulnerability",
+    "title": "File Upload Vulnerability",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "PHP",
+      "Web",
+      "Injection"
+    ],
+    "excerpt": "What is a File Upload Vulnerability? A File Upload Vulnerability is a type of security flaw found in websites or applications that allow users to upload files (such as images, videos, or…",
+    "readingTime": 5,
+    "wordCount": 868,
+    "cover": "./images/articles/web-security-file-upload-vulnerability/01.png",
+    "generatedCover": "./images/covers/web-security-file-upload-vulnerability.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-security/file-upload-vulnerability"
+  },
+  {
+    "slug": "web-security-how-i-found-a-security-vulnerability-in-nasa",
+    "title": "How I found a security vulnerability in NASA",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "Web"
+    ],
+    "excerpt": "Hey Everyone , Here’s another example of a vulnerability I found in NASA . This is actually my third bug with them, and honestly, it was a pretty fun one that also gave me a nice takeaway.…",
+    "readingTime": 2,
+    "wordCount": 373,
+    "cover": "./images/articles/web-security-how-i-found-a-security-vulnerability-in-nasa/01.png",
+    "generatedCover": "./images/covers/web-security-how-i-found-a-security-vulnerability-in-nasa.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-security/how-i-found-a-security-vulnerability-in-nasa"
+  },
+  {
+    "slug": "web-security-understanding-and-mitigating-web-injection-vulnerabilities-a-source-code-pe",
+    "title": "Understanding and Mitigating Web Injection Vulnerabilities: A Source Code Perspective",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "PHP",
+      "Web",
+      "Injection"
+    ],
+    "excerpt": "Introduction Web security is one of the most critical concerns in today’s digital landscape. Among the many threats, injection vulnerabilities — especially Cross-Site Scripting (XSS) —…",
+    "readingTime": 3,
+    "wordCount": 548,
+    "cover": "./images/covers/web-security-understanding-and-mitigating-web-injection-vulnerabilities-a-source-code-pe.svg",
+    "generatedCover": "./images/covers/web-security-understanding-and-mitigating-web-injection-vulnerabilities-a-source-code-pe.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-security/understanding-and-mitigating-web-injection-vulnerabilities-a-source-code-perspective"
+  },
+  {
+    "slug": "web-security-sop-cors-and-csp-explained",
+    "title": "SOP, CORS, and CSP Explained",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "Web",
+      "Injection",
+      "Authentication"
+    ],
+    "excerpt": "Understanding Web Security Policies: SOP, CORS, and CSP This article delves into crucial web security policies— Same-Origin Policy (SOP) , Cross-Origin Resource Sharing (CORS) , and Content…",
+    "readingTime": 2,
+    "wordCount": 352,
+    "cover": "./images/covers/web-security-sop-cors-and-csp-explained.svg",
+    "generatedCover": "./images/covers/web-security-sop-cors-and-csp-explained.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-security/sop-cors-and-csp-explained"
+  },
+  {
+    "slug": "my-cve-cve-2026-33177-moderate",
+    "title": "CVE-2026-33177 (Moderate)",
+    "category": "My CVE",
+    "tags": [
+      "My CVE",
+      "PHP",
+      "Web",
+      "CVE"
+    ],
+    "excerpt": "Broken Access Control in Statamic CMS — Unauthorized Taxonomy Term Creation Affected Package: statamic/cms Affected Version: Before You Read: Key Concepts If you are new to web security or…",
+    "readingTime": 6,
+    "wordCount": 1080,
+    "cover": "./images/articles/my-cve-cve-2026-33177-moderate/01.png",
+    "generatedCover": "./images/covers/my-cve-cve-2026-33177-moderate.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/my-cve/cve-2026-33177-moderate"
+  },
+  {
+    "slug": "my-cve-cve-2026-twig",
+    "title": "OS Injection in Twig",
+    "category": "My CVE",
+    "tags": [
+      "My CVE",
+      "PHP",
+      "CVE",
+      "Injection"
+    ],
+    "excerpt": "Twig Filter Bypass Enables Arbitrary Local File Read by Low-Privilege Users This vulnerability had already been patched and reported by other security researchers before me. However, after…",
+    "readingTime": 3,
+    "wordCount": 579,
+    "cover": "./images/articles/my-cve-cve-2026-twig/01.png",
+    "generatedCover": "./images/covers/my-cve-cve-2026-twig.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/my-cve/cve-2026-twig"
+  },
+  {
+    "slug": "my-cve-cve-2026-winter",
+    "title": "CVE-2026-35445 (Heigh)",
+    "category": "My CVE",
+    "tags": [
+      "My CVE",
+      "Web",
+      "CVE",
+      "Python"
+    ],
+    "excerpt": "In the normal application flow, when a user account becomes suspended , only an administrator —from privileged user management interfaces—should be able to unsuspend that account. However,…",
+    "readingTime": 3,
+    "wordCount": 454,
+    "cover": "./images/articles/my-cve-cve-2026-winter/01.png",
+    "generatedCover": "./images/covers/my-cve-cve-2026-winter.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/my-cve/cve-2026-winter"
+  },
+  {
+    "slug": "my-cve-cve-2026-27593-critical",
+    "title": "CVE-2026-27593 (Critical)",
+    "category": "My CVE",
+    "tags": [
+      "My CVE",
+      "Web",
+      "CVE"
+    ],
+    "excerpt": "Password Reset Link Poisoning Lead to Admin Account Take over with 1-click& x20; in statamic CMS Version 6.7.0 The vulnerability was discovered by someone, then it was fixed, and then I…",
+    "readingTime": 4,
+    "wordCount": 696,
+    "cover": "./images/articles/my-cve-cve-2026-27593-critical/01.png",
+    "generatedCover": "./images/covers/my-cve-cve-2026-27593-critical.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/my-cve/cve-2026-27593-critical"
+  },
+  {
+    "slug": "android-security-mobilehackinglabs-iot-connect-lab",
+    "title": "MobileHackingLabs - IoT Connect Lab",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "Android",
+      "Cryptography",
+      "Authentication"
+    ],
+    "excerpt": "When the IoT Connect application opens, the screen shows two windows: one for Login and the other for Register . We can register a new account, but the account we create has very limited…",
+    "readingTime": 3,
+    "wordCount": 557,
+    "cover": "./images/articles/android-security-mobilehackinglabs-iot-connect-lab/01.png",
+    "generatedCover": "./images/covers/android-security-mobilehackinglabs-iot-connect-lab.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/android-security/mobilehackinglabs-iot-connect-lab"
+  },
+  {
+    "slug": "android-security-mobilehackinglabs-gussme",
+    "title": "MobileHackingLabs - GussMe",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "Android",
+      "Web",
+      "CTF"
+    ],
+    "excerpt": "Let’s see what this challenge is about originally. First thing we find is that there’s an APK for a number-guessing game, and we see that the game code is simple: you have 10 attempts to…",
+    "readingTime": 5,
+    "wordCount": 881,
+    "cover": "./images/articles/android-security-mobilehackinglabs-gussme/01.png",
+    "generatedCover": "./images/covers/android-security-mobilehackinglabs-gussme.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/android-security/mobilehackinglabs-gussme"
+  },
+  {
+    "slug": "android-security-android-native-library-analysis",
+    "title": "Android Native Library Analysis",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "Android",
+      "Python"
+    ],
+    "excerpt": "What Are Native Libraries and Why Do We Use Them? Native libraries are usually built using C or C++ code. These languages are called “native” because their code runs at a level closer to…",
+    "readingTime": 5,
+    "wordCount": 983,
+    "cover": "./images/articles/android-security-android-native-library-analysis/01.png",
+    "generatedCover": "./images/covers/android-security-android-native-library-analysis.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/android-security/android-native-library-analysis"
+  },
+  {
+    "slug": "mobile-security-flutter-root-detection-arm64-patch",
+    "title": "Bypassing Flutter Root Detection with One ARM64 Patch (Android)",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "Flutter",
+      "Android",
+      "ARM64"
+    ],
+    "excerpt": "Reverse-engineering a Flutter application is different from analyzing a traditional Android app. In a Java or Kotlin application, most logic can be found inside classes.dex and inspected…",
+    "readingTime": 8,
+    "wordCount": 1496,
+    "cover": "./images/articles/mobile-security-flutter-root-detection-arm64-patch/01.png",
+    "generatedCover": "./images/covers/mobile-security-flutter-root-detection-arm64-patch.svg",
+    "sourceUrl": "https://medium.com/@everythingBlackkk/bypassing-flutter-root-detection-with-one-arm64-patch-android-43a88f9ce12e"
+  },
+  {
+    "slug": "mobile-security-ios-safe-device-root-detection",
+    "title": "iOS Bypass Root Detection in safe_device 1.3.10",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "Flutter",
+      "iOS",
+      "Reverse Engineering"
+    ],
+    "excerpt": "In this article, we will explore how the following package works and how i bypass 10 layer of this package: safe device Flutter package The app uses a Flutter plugin called safe device to…",
+    "readingTime": 6,
+    "wordCount": 1071,
+    "cover": "./images/articles/mobile-security-ios-safe-device-root-detection/01.png",
+    "generatedCover": "./images/covers/mobile-security-ios-safe-device-root-detection.svg",
+    "sourceUrl": "https://medium.com/@everythingBlackkk/ios-bypass-root-detection-in-1-3-10-safe-device-package-85c5b2e8c6c5"
+  },
+  {
+    "slug": "mobile-security-flutter-proxy-settings",
+    "title": "Why Proxy Settings Don’t Work in Flutter Apps",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "Flutter",
+      "Proxy",
+      "Networking"
+    ],
+    "excerpt": "Why Don’t Proxy Settings Work Normally with Flutter Apps, Unlike Apps Built with Java or Kotlin? Normally, when you are testing a mobile application — whether Android or iOS — you configure…",
+    "readingTime": 3,
+    "wordCount": 496,
+    "cover": "./images/articles/mobile-security-flutter-proxy-settings/01.png",
+    "generatedCover": "./images/covers/mobile-security-flutter-proxy-settings.svg",
+    "sourceUrl": "https://medium.com/@everythingBlackkk/why-proxy-settings-dont-work-in-flutter-apps-8ffe557ecf56"
+  },
+  {
+    "slug": "mobile-security-no-escape",
+    "title": "MobileHackingLab – No Escape: Bypassing iOS Jailbreak Detection",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "iOS",
+      "LLDB",
+      "Frida"
+    ],
+    "excerpt": "No Escape is an iOS reverse-engineering challenge from Mobile Hacking Lab. This writeup explains how the jailbreak check works and how we bypassed it with LLDB and Frida.",
+    "readingTime": 8,
+    "wordCount": 1479,
+    "cover": "./images/manual/no-escape/01.png",
+    "generatedCover": "./images/manual/no-escape/fallback.svg",
+    "sourceUrl": "https://academy.mobilehackinglab.com/course/lab-no-escape"
+  },
+  {
+    "slug": "php-security-sql-injection-php",
+    "title": "SQL injection (PHP)",
+    "category": "PHP Security",
+    "tags": [
+      "PHP Security",
+      "PHP",
+      "Injection"
+    ],
+    "excerpt": "PHP code vulnerable to SQL injection. Secure PHP Code Explanation In this code, there was a problem: we were taking the id directly from the GET request without any validation. The issue…",
+    "readingTime": 2,
+    "wordCount": 232,
+    "cover": "./images/covers/php-security-sql-injection-php.svg",
+    "generatedCover": "./images/covers/php-security-sql-injection-php.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/php-security/sql-injection-php"
+  },
+  {
+    "slug": "php-security-session-hijacking-and-fixation-part-1-php",
+    "title": "Session Hijacking & Fixation Part 1 (PHP)",
+    "category": "PHP Security",
+    "tags": [
+      "PHP Security",
+      "PHP",
+      "Web",
+      "Authentication"
+    ],
+    "excerpt": "Session Hijacking & Fixation Part 1 We Need To Know Some Basic Information First Did you Ask Yourself Before when you Add Product like 'keyboard' In your cart After That You open Your…",
+    "readingTime": 5,
+    "wordCount": 1000,
+    "cover": "./images/covers/php-security-session-hijacking-and-fixation-part-1-php.svg",
+    "generatedCover": "./images/covers/php-security-session-hijacking-and-fixation-part-1-php.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/php-security/session-hijacking-and-fixation-part-1-php"
+  },
+  {
+    "slug": "php-security-local-file-inclusion-lfi-php",
+    "title": "Local File Inclusion LFI (PHP)",
+    "category": "PHP Security",
+    "tags": [
+      "PHP Security",
+      "PHP",
+      "Web",
+      "Cryptography"
+    ],
+    "excerpt": "Local File Inclusion (LFI) The Local File Inclusion (LFI) vulnerability is a web-app security flaw that lets an attacker view files they normally shouldn't be able to see. This happens…",
+    "readingTime": 2,
+    "wordCount": 189,
+    "cover": "./images/covers/php-security-local-file-inclusion-lfi-php.svg",
+    "generatedCover": "./images/covers/php-security-local-file-inclusion-lfi-php.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/php-security/local-file-inclusion-lfi-php"
+  },
+  {
+    "slug": "php-security-csrf-php",
+    "title": "CSRF (PHP)",
+    "category": "PHP Security",
+    "tags": [
+      "PHP Security",
+      "PHP",
+      "Web",
+      "Authentication"
+    ],
+    "excerpt": "The main idea of our exploit is to take advantage of the browser’s behavior, because it automatically sends your session cookie with every request made to the website. First, we need to…",
+    "readingTime": 5,
+    "wordCount": 949,
+    "cover": "./images/covers/php-security-csrf-php.svg",
+    "generatedCover": "./images/covers/php-security-csrf-php.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/php-security/csrf-php"
+  },
+  {
+    "slug": "web-development-and-technologies-server-side-rendering-ssr-vs-client-side-rendering-csr",
+    "title": "Server-Side Rendering (SSR) VS Client-Side Rendering (CSR)",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "Web"
+    ],
+    "excerpt": "The Difference Between Server-Side Rendering (SSR) and Client-Side Rendering (CSR) and the Concept Behind Single Page Applications (SPAs) When developing a website, one of the key…",
+    "readingTime": 4,
+    "wordCount": 711,
+    "cover": "./images/articles/web-development-and-technologies-server-side-rendering-ssr-vs-client-side-rendering-csr/01.png",
+    "generatedCover": "./images/covers/web-development-and-technologies-server-side-rendering-ssr-vs-client-side-rendering-csr.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-development-and-technologies/server-side-rendering-ssr-vs-client-side-rendering-csr"
+  },
+  {
+    "slug": "web-development-and-technologies-what-is-graphql",
+    "title": "What is GraphQL ?",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "GraphQL",
+      "Web"
+    ],
+    "excerpt": "1. What Is GraphQL (Technical Explanation + Comparison with REST) Technical Definition GraphQL is a query language designed to interact with APIs , allowing the client to specify exactly…",
+    "readingTime": 5,
+    "wordCount": 957,
+    "cover": "./images/articles/web-development-and-technologies-what-is-graphql/01.png",
+    "generatedCover": "./images/covers/web-development-and-technologies-what-is-graphql.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-development-and-technologies/what-is-graphql"
+  },
+  {
+    "slug": "web-development-and-technologies-what-is-graphql-1",
+    "title": "What is GraphQL ?",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "GraphQL",
+      "Authentication"
+    ],
+    "excerpt": "GraphQL Type System and Schema Definition Language (SDL) GraphQL uses its own type system to define the schema of an API. The specific syntax used for writing schemas is called the Schema…",
+    "readingTime": 6,
+    "wordCount": 1135,
+    "cover": "./images/articles/web-development-and-technologies-what-is-graphql-1/01.png",
+    "generatedCover": "./images/covers/web-development-and-technologies-what-is-graphql-1.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-development-and-technologies/what-is-graphql-1"
+  },
+  {
+    "slug": "web-development-and-technologies-graphql-vs-rest",
+    "title": "GraphQL VS REST",
+    "category": "Web Security",
+    "tags": [
+      "Web Security",
+      "GraphQL",
+      "Web"
+    ],
+    "excerpt": "1. Introduction: REST vs. GraphQL REST has been the standard for designing web APIs over the past decade, offering beneficial concepts such as structured access to resources and stateless…",
+    "readingTime": 5,
+    "wordCount": 966,
+    "cover": "./images/articles/web-development-and-technologies-graphql-vs-rest/01.png",
+    "generatedCover": "./images/covers/web-development-and-technologies-graphql-vs-rest.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/web-development-and-technologies/graphql-vs-rest"
+  },
+  {
+    "slug": "offensive-security-use-dns-record-in-red-team",
+    "title": "Use DNS Record in Red Team",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security",
+      "Web",
+      "Python",
+      "CTF"
+    ],
+    "excerpt": "One of the well-known methods for detecting threats is monitoring DNS traffic to identify suspicious connections. If a hacker is communicating with a Command and Control (C &C) server via…",
+    "readingTime": 3,
+    "wordCount": 533,
+    "cover": "./images/articles/offensive-security-use-dns-record-in-red-team/01.png",
+    "generatedCover": "./images/covers/offensive-security-use-dns-record-in-red-team.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/offensive-security/use-dns-record-in-red-team"
+  },
+  {
+    "slug": "offensive-security-c2-server-via-youtube",
+    "title": "C2 Server Via YouTube",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security",
+      "Web",
+      "Cryptography",
+      "Authentication"
+    ],
+    "excerpt": "Innovative C2 Tool Using YouTube Comments Remote control of devices through a C2 Server has become a widespread topic in Red Teaming and security testing, but what’s interesting is how…",
+    "readingTime": 4,
+    "wordCount": 696,
+    "cover": "./images/articles/offensive-security-c2-server-via-youtube/01.png",
+    "generatedCover": "./images/covers/offensive-security-c2-server-via-youtube.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/offensive-security/c2-server-via-youtube"
+  },
+  {
+    "slug": "offensive-security-editor",
+    "title": "How does malware know difference between the Virtual Machine and the real Machine?",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security"
+    ],
+    "excerpt": "Hello everyone! Today, I’ll discuss the techniques used by malware developers to identify if their code is running in a real environment or a virtual machine (VM) so that they can decide…",
+    "readingTime": 6,
+    "wordCount": 1208,
+    "cover": "./images/articles/offensive-security-editor/01.png",
+    "generatedCover": "./images/covers/offensive-security-editor.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/offensive-security/editor"
+  },
+  {
+    "slug": "ctf-eycc-2025-cryptography",
+    "title": "EYCC 2025 - Cryptography",
+    "category": "CTF",
+    "tags": [
+      "Web",
+      "Cryptography",
+      "CTF"
+    ],
+    "excerpt": "Challenge ( 1 ) Veiled Secret& x20; At the beginning, there were three challenges in cryptography. The first challenge was called Veiled Secret , and it was an easy challenge worth 100…",
+    "readingTime": 4,
+    "wordCount": 637,
+    "cover": "./images/articles/ctf-eycc-2025-cryptography/01.png",
+    "generatedCover": "./images/covers/ctf-eycc-2025-cryptography.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/eycc-2025-cryptography"
+  },
+  {
+    "slug": "ctf-cyshield-2025-android-part-or",
+    "title": "cyshield 2025 - Android Part |",
+    "category": "CTF",
+    "tags": [
+      "Android",
+      "Cryptography",
+      "CTF"
+    ],
+    "excerpt": "Analysis of the AndroidManifest The first thing you must do when looking for anything about the app is to check the AndroidManifest.xml of the APK because it contains everything about the…",
+    "readingTime": 5,
+    "wordCount": 971,
+    "cover": "./images/articles/ctf-cyshield-2025-android-part-or/01.png",
+    "generatedCover": "./images/covers/ctf-cyshield-2025-android-part-or.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/cyshield-2025-android-part-or"
+  },
+  {
+    "slug": "ctf-cyshield-2025-android-part-or-or",
+    "title": "cyshield 2025 - Android Part ||",
+    "category": "CTF",
+    "tags": [
+      "CTF",
+      "Android"
+    ],
+    "excerpt": "At the start when you open the App you will see a message saying the Master Key is wrong So let us open the APK and try to analyze it and understand. APK Code Analysis AndroidManifest.xml…",
+    "readingTime": 5,
+    "wordCount": 1050,
+    "cover": "./images/articles/ctf-cyshield-2025-android-part-or-or/01.png",
+    "generatedCover": "./images/covers/ctf-cyshield-2025-android-part-or-or.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/cyshield-2025-android-part-or-or"
+  },
+  {
+    "slug": "ctf-eycc-2025-web",
+    "title": "EYCC 2025 - Web",
+    "category": "CTF",
+    "tags": [
+      "JWT",
+      "Web",
+      "CTF",
+      "Authentication"
+    ],
+    "excerpt": "At the beginning of the challenge, there was a normal login page with guest:guest , and everything seemed normal. After logging in, we notice that there is an auth token, which is a JWT…",
+    "readingTime": 4,
+    "wordCount": 830,
+    "cover": "./images/articles/ctf-eycc-2025-web/01.png",
+    "generatedCover": "./images/covers/ctf-eycc-2025-web.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/eycc-2025-web"
+  },
+  {
+    "slug": "ctf-eycc-2025-forensics",
+    "title": "EYCC 2025 - Forensics",
+    "category": "CTF",
+    "tags": [
+      "Web",
+      "CTF",
+      "Forensics"
+    ],
+    "excerpt": "Hello everyone, This challenge is considered medium-level, not too difficult, but it contains some combined ideas which made it quite interesting. Let’s talk about the beginning. In this…",
+    "readingTime": 2,
+    "wordCount": 270,
+    "cover": "./images/articles/ctf-eycc-2025-forensics/01.png",
+    "generatedCover": "./images/covers/ctf-eycc-2025-forensics.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/eycc-2025-forensics"
+  },
+  {
+    "slug": "ctf-nice-cryptography",
+    "title": "Nice Cryptography",
+    "category": "CTF",
+    "tags": [
+      "Cryptography",
+      "Python",
+      "CTF"
+    ],
+    "excerpt": "Exploiting Common Prime Factors in RSA Public Keys Introduction In this challenge, we were provided with two RSA public keys. The task was to retrieve the encrypted flag. The vulnerability…",
+    "readingTime": 3,
+    "wordCount": 591,
+    "cover": "./images/articles/ctf-nice-cryptography/01.png",
+    "generatedCover": "./images/covers/ctf-nice-cryptography.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/nice-cryptography"
+  },
+  {
+    "slug": "ctf-santacloud-intigriti",
+    "title": "santacloud - intigriti",
+    "category": "CTF",
+    "tags": [
+      "CTF",
+      "Injection",
+      "Authentication"
+    ],
+    "excerpt": "At the very beginning, when you land on the main page, you’ll notice a few important notes: Should leverage a vulnerability on the challenge page. Shouldn't be self-XSS or related to MiTM…",
+    "readingTime": 3,
+    "wordCount": 603,
+    "cover": "./images/articles/ctf-santacloud-intigriti/01.png",
+    "generatedCover": "./images/covers/ctf-santacloud-intigriti.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/santacloud-intigriti"
+  },
+  {
+    "slug": "ctf-inkdrop-intigriti",
+    "title": "InkDrop - Intigriti",
+    "category": "CTF",
+    "tags": [
+      "CTF",
+      "Injection",
+      "Authentication"
+    ],
+    "excerpt": "Breaking InkDrop: A JSONP Callback Injection Adventure Introduction So there I was, staring at this CTF challenge called \"InkDrop\" - a collaborative writing platform where users can create…",
+    "readingTime": 4,
+    "wordCount": 702,
+    "cover": "./images/articles/ctf-inkdrop-intigriti/01.png",
+    "generatedCover": "./images/covers/ctf-inkdrop-intigriti.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/inkdrop-intigriti"
+  },
+  {
+    "slug": "ctf-e-corp-bank-gdgfa",
+    "title": "E Corp Bank - GDGFA",
+    "category": "CTF",
+    "tags": [
+      "Web",
+      "CTF",
+      "Injection",
+      "Authentication"
+    ],
+    "excerpt": "eCorp Bank — CTF Challenge Writeup Key Vulnerabilities 1. Insecure Direct Object Reference (IDOR): The /api/userData?id= endpoint has no authentication check, allowing any logged-in user to…",
+    "readingTime": 6,
+    "wordCount": 1076,
+    "cover": "./images/articles/ctf-e-corp-bank-gdgfa/01.png",
+    "generatedCover": "./images/covers/ctf-e-corp-bank-gdgfa.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/ctf/e-corp-bank-gdgfa"
+  },
+  {
+    "slug": "python-tools-integrations",
+    "title": "Malware Behavior Analysis",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security",
+      "Networking"
+    ],
+    "excerpt": "Malware Crusher Process Monitoring Tool This tool provides a comprehensive monitoring solution for any process running on a Windows machine. It allows you to track various system parameters…",
+    "readingTime": 2,
+    "wordCount": 131,
+    "cover": "./images/covers/python-tools-integrations.svg",
+    "generatedCover": "./images/covers/python-tools-integrations.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/python-tools/integrations"
+  },
+  {
+    "slug": "python-tools-integrations-2",
+    "title": "Malware Static Analysis",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security",
+      "Python"
+    ],
+    "excerpt": "MalwarePE A Python-based tool for analyzing Windows Portable Executable (PE) files. MalwarePE provides detailed analysis of PE files including section information, imported/exported…",
+    "readingTime": 2,
+    "wordCount": 101,
+    "cover": "./images/covers/python-tools-integrations-2.svg",
+    "generatedCover": "./images/covers/python-tools-integrations-2.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/python-tools/integrations-2"
+  },
+  {
+    "slug": "python-tools-integrations-3",
+    "title": "Asymmetric Encryption \"Python\"",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security",
+      "Cryptography",
+      "Python",
+      "Authentication"
+    ],
+    "excerpt": "Understanding Asymmetric Encryption with Simple Examples Grab your coffee and let's dive into Asymmetric Encryption with a few easy-to-understand examples. How Does Asymmetric Encryption…",
+    "readingTime": 3,
+    "wordCount": 516,
+    "cover": "./images/articles/python-tools-integrations-3/01.png",
+    "generatedCover": "./images/covers/python-tools-integrations-3.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/python-tools/integrations-3"
+  },
+  {
+    "slug": "python-tools-integrations-4",
+    "title": "Extract Browsers passwords",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security",
+      "Web"
+    ],
+    "excerpt": "only Run In Windows & x20; 1 - Google",
+    "readingTime": 2,
+    "wordCount": 10,
+    "cover": "./images/covers/python-tools-integrations-4.svg",
+    "generatedCover": "./images/covers/python-tools-integrations-4.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/python-tools/integrations-4"
+  },
+  {
+    "slug": "python-tools-integrations-5",
+    "title": "Reverse\\_Shell",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security"
+    ],
+    "excerpt": "1 - Attacker Side :)& x20; 2 - Victim Side :)&",
+    "readingTime": 2,
+    "wordCount": 12,
+    "cover": "./images/covers/python-tools-integrations-5.svg",
+    "generatedCover": "./images/covers/python-tools-integrations-5.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/python-tools/integrations-5"
+  },
+  {
+    "slug": "crypto-note-how-rsa-work-p1",
+    "title": "How RSA Work ?  (P1)",
+    "category": "Offensive Security",
+    "tags": [
+      "Offensive Security",
+      "Cryptography",
+      "Python"
+    ],
+    "excerpt": "RSA Explained in Simple Terms In the RSA algorithm, we use an operation called Modular Exponentiation , which simply means: Take a number (the base), raise it to a power (the exponent),…",
+    "readingTime": 2,
+    "wordCount": 247,
+    "cover": "./images/articles/crypto-note-how-rsa-work-p1/01.png",
+    "generatedCover": "./images/covers/crypto-note-how-rsa-work-p1.svg",
+    "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/crypto-note/how-rsa-work-p1"
+  }
+]

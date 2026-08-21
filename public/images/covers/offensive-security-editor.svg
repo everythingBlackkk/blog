@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680">
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="translate(681.1999999999999 384.65) rotate(35) scale(620 420)">
+      <stop stop-color="#dedede" stop-opacity=".27"/><stop offset="1" stop-color="#dedede" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="translate(1037.7 184.5) rotate(140) scale(560 400)">
+      <stop stop-color="#4a4a4a" stop-opacity=".7"/><stop offset="1" stop-color="#4a4a4a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="g" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern>
+    <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .05"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1200" height="680" rx="36" fill="#0b100e"/><rect width="1200" height="680" rx="36" fill="url(#a)"/><rect width="1200" height="680" rx="36" fill="url(#b)"/><rect width="1200" height="680" rx="36" fill="url(#g)"/>
+  <path d="M342 508C330 290 596 650 1110 270" fill="none" stroke="#dedede" stroke-opacity=".22" stroke-width="2"/>
+  <circle cx="681.1999999999999" cy="384.65" r="8" fill="#dedede"/><circle cx="1037.7" cy="184.5" r="5" fill="#dedede" fill-opacity=".7"/>
+  <text x="72" y="86" fill="#dedede" font-family="ui-monospace,monospace" font-size="18" letter-spacing="3">22 / OFFENSIVE SECURITY</text>
+  <text x="72" y="588" fill="#eef7f1" font-family="ui-sans-serif,system-ui" font-size="34" font-weight="650">How does malware know difference between the Virtual M</text>
+  <text x="72" y="626" fill="#a4b2aa" font-family="ui-monospace,monospace" font-size="17">everythingBlackkk / research.notes</text>
+  <rect width="1200" height="680" rx="36" filter="url(#noise)" opacity=".65"/>
+</svg>
