@@ -234,6 +234,23 @@
     "sourceUrl": "https://medium.com/@everythingBlackkk/why-proxy-settings-dont-work-in-flutter-apps-8ffe557ecf56"
   },
   {
+    "slug": "mobile-security-flipcoin",
+    "title": "MobileHackingLab – FlipCoin: Deep-Link SQL Injection on iOS",
+    "category": "Mobile Security",
+    "tags": [
+      "Mobile Security",
+      "iOS",
+      "Deep Links",
+      "SQL Injection"
+    ],
+    "excerpt": "FlipCoin is an intentionally vulnerable iOS wallet challenge. This writeup traces its custom deep link, redirects the JSON-RPC request, and exploits SQL injection to retrieve the recovery key.",
+    "readingTime": 10,
+    "wordCount": 1875,
+    "cover": "./images/manual/flipcoin-lab/cover.png",
+    "generatedCover": "./images/manual/flipcoin-lab/cover.png",
+    "sourceUrl": "https://academy.mobilehackinglab.com/course/lab-flipcoin"
+  },
+  {
     "slug": "mobile-security-no-escape",
     "title": "MobileHackingLab – No Escape: Bypassing iOS Jailbreak Detection",
     "category": "Mobile Security",

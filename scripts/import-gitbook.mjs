@@ -32,6 +32,16 @@ const mediumSources = [
 ];
 const manualSources = [
   {
+    file: 'mobile-security-flipcoin.md',
+    slug: 'mobile-security-flipcoin',
+    title: 'MobileHackingLab – FlipCoin: Deep-Link SQL Injection on iOS',
+    category: 'Mobile Security',
+    tags: ['Mobile Security', 'iOS', 'Deep Links', 'SQL Injection'],
+    cover: './images/manual/flipcoin-lab/cover.png',
+    generatedCover: './images/manual/flipcoin-lab/cover.png',
+    sourceUrl: 'https://academy.mobilehackinglab.com/course/lab-flipcoin',
+  },
+  {
     file: 'mobile-security-no-escape.md',
     slug: 'mobile-security-no-escape',
     title: 'MobileHackingLab – No Escape: Bypassing iOS Jailbreak Detection',

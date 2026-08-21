@@ -21,7 +21,10 @@ const categorySlug = (category) => category.toLowerCase().replace(/[^a-z0-9]+/g,
 const categoryFromSlug = (slug) => categoryList.find((category) => categorySlug(category) === slug);
 const homeArticles = [
   ...articles.filter((article) => article.slug === 'mobile-security-no-escape'),
-  ...articles.filter((article) => article.category === 'Mobile Security' && article.slug !== 'mobile-security-no-escape'),
+  ...articles.filter((article) => article.category === 'Mobile Security' && ![
+    'mobile-security-no-escape',
+    'android-security-mobilehackinglabs-gussme',
+  ].includes(article.slug)),
   ...articles.filter((article) => ['offensive-security-use-dns-record-in-red-team', 'offensive-security-c2-server-via-youtube'].includes(article.slug)),
   ...articles.filter((article) => article.category === 'My CVE'),
 ];
