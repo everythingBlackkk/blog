@@ -20,6 +20,7 @@ const categoryList = [...new Set(articles.map((article) => article.category))];
 const categorySlug = (category) => category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const categoryFromSlug = (slug) => categoryList.find((category) => categorySlug(category) === slug);
 const homeArticles = [
+  ...articles.filter((article) => article.slug === 'ctf-mulmusic-lumma-stealer'),
   ...articles.filter((article) => article.slug === 'mobile-security-no-escape'),
   ...articles.filter((article) => article.category === 'Mobile Security' && ![
     'mobile-security-no-escape',
