@@ -446,6 +446,24 @@
     "sourceUrl": "https://everythingblackkk.gitbook.io/everythingblackkk/offensive-security/editor"
   },
   {
+    "slug": "ctf-mulmusic-lumma-stealer",
+    "title": "MulMusic: Reversing a Lumma Stealer-Inspired Challenge",
+    "category": "CTF",
+    "tags": [
+      "CTF",
+      "Reverse Engineering",
+      "Malware Analysis",
+      "PowerShell",
+      ".NET"
+    ],
+    "excerpt": "Tracing a Lumma Stealer-inspired challenge from an MP3 disguise through five decoding stages to recover its C2 server.",
+    "readingTime": 9,
+    "wordCount": 1793,
+    "cover": "./images/manual/mulmusic/cover.png",
+    "generatedCover": "./images/manual/mulmusic/cover.png",
+    "sourceUrl": "https://app.notion.com/p/3df4a24dd79580c4844ae234b75dbb8d"
+  },
+  {
     "slug": "ctf-eycc-2025-cryptography",
     "title": "EYCC 2025 - Cryptography",
     "category": "CTF",

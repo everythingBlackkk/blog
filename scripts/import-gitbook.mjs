@@ -32,6 +32,22 @@ const mediumSources = [
 ];
 const manualSources = [
   {
+    "file": "ctf-mulmusic-lumma-stealer.md",
+    "slug": "ctf-mulmusic-lumma-stealer",
+    "title": "MulMusic: Reversing a Lumma Stealer-Inspired Challenge",
+    "category": "CTF",
+    "tags": [
+      "CTF",
+      "Reverse Engineering",
+      "Malware Analysis",
+      "PowerShell",
+      ".NET"
+    ],
+    "cover": "./images/manual/mulmusic/cover.png",
+    "generatedCover": "./images/manual/mulmusic/cover.png",
+    "sourceUrl": "https://app.notion.com/p/3df4a24dd79580c4844ae234b75dbb8d"
+  },
+  {
     file: 'mobile-security-flipcoin.md',
     slug: 'mobile-security-flipcoin',
     title: 'MobileHackingLab – FlipCoin: Deep-Link SQL Injection on iOS',
