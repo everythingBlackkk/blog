@@ -4,7 +4,7 @@ import hljs from 'highlight.js';
 import { marked } from 'marked';
 import {
   ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight,
-  Clock3, Code2, ContactRound, FileUser, House, Menu, Search, Terminal, X,
+  Code2, ContactRound, FileUser, House, Menu, Search, Terminal, X,
 } from 'lucide-react';
 import manifest from './content-manifest.json';
 
@@ -151,7 +151,7 @@ function ArticleCard({ article, featured = false }) {
         <span className="cover-code">{CATEGORY_ICONS[article.category] || 'LOG'}</span>
       </a>
       <div className="card-body">
-        <div className="card-meta"><a href={`#/category/${categorySlug(article.category)}`}>{article.category}</a><span><Clock3 size={13} /> {article.readingTime} min read</span></div>
+        <div className="card-meta"><a href={`#/category/${categorySlug(article.category)}`}>{article.category}</a></div>
         <h3><a href={`#/article/${article.slug}`}>{article.title}</a></h3>
         <p>{article.excerpt}</p>
         <div className="card-footer">
@@ -349,10 +349,6 @@ function ArticlePage({ slug }) {
         <a className="article-category" href={`#/category/${categorySlug(article.category)}`}><span>{CATEGORY_ICONS[article.category]}</span>{article.category}</a>
         <h1>{article.title}</h1>
         <p>{article.excerpt}</p>
-        <div className="article-meta">
-          <span><Clock3 size={15} /> {article.readingTime} min read</span>
-          <a href={article.sourceUrl} target="_blank" rel="noreferrer">Original source <ArrowUpRight size={14} /></a>
-        </div>
         <div className="article-tags">{article.tags.map((tag) => <span key={tag}>#{tag.replace(/\s/g, '-').toLowerCase()}</span>)}</div>
         <img className="article-cover" src={article.cover} alt={`${article.title} cover`} onError={(event) => { event.currentTarget.src = article.generatedCover; }} />
       </div>
@@ -380,7 +376,7 @@ function SearchDialog({ open, onClose }) {
   const results = articles.filter((item) => !query || `${item.title} ${item.category} ${item.tags.join(' ')}`.toLowerCase().includes(query.toLowerCase())).slice(0, 8);
   return <div className="dialog-backdrop" onMouseDown={onClose}><div className="search-dialog" onMouseDown={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-label="Search articles">
     <div className="dialog-input"><Search size={20} /><input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search the archive…" /><button onClick={onClose}><X size={18} /></button></div>
-    <div className="dialog-results">{results.map((article) => <a href={`#/article/${article.slug}`} onClick={onClose} key={article.slug}><span className="result-icon">{CATEGORY_ICONS[article.category]}</span><span><strong>{article.title}</strong><small>{article.category} · {article.readingTime} min</small></span><ChevronRight size={17} /></a>)}</div>
+    <div className="dialog-results">{results.map((article) => <a href={`#/article/${article.slug}`} onClick={onClose} key={article.slug}><span className="result-icon">{CATEGORY_ICONS[article.category]}</span><span><strong>{article.title}</strong><small>{article.category}</small></span><ChevronRight size={17} /></a>)}</div>
     <div className="dialog-hint"><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span><span>{articles.length} indexed articles</span></div>
   </div></div>;
 }
