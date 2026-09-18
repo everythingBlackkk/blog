@@ -1,0 +1,217 @@
+{
+  "https://www.youtube.com/@everythingBlackkk": {
+    "title": "Yassin Mohamed",
+    "description": "Hey everyone, I'm Yassin. I fell in love with software development and hacking—yes, I love it! I enjoy discovering critical security vulnerabilities, diving deep into malware development and analysis, and exploring Active Directory attacks. I code in C and Python, and I'm always eager to learn about everything new in this exciting world!\n\nGithub :https://github.com/everythingBlackkk/\nBlog :https://everythingblackkk.gitbook.io/everythingblackkk\n\n",
+    "image": "https://yt3.googleusercontent.com/HH53zQS68vIfvqADxgwEsSCOhwu51h0KgtKGIq6jWJH1mo9fJSLbgfNc-H4oBJcR-x5F-hsMig=s900-c-k-c0x00ffffff-no-rj"
+  },
+  "https://github.com/everythingBlackkk": {
+    "title": "everythingBlackkk - Overview",
+    "description": "Nothing is safe from hacking, so here I am. everythingBlackkk has 16 repositories available. Follow their code on GitHub.",
+    "image": "https://avatars.githubusercontent.com/u/142638957?v=4?s=400"
+  },
+  "https://hexed.it/": {
+    "title": "HexEd.it - Free Browser-based Online and Offline Hex Editing",
+    "description": "",
+    "image": ""
+  },
+  "https://oeis.org": {
+    "title": "The On-Line Encyclopedia of Integer Sequences (OEIS)",
+    "description": "",
+    "image": ""
+  },
+  "https://gist.github.com/leommoore/f9e57ba2aa4bf197ebc5": {
+    "title": "File Magic Numbers",
+    "description": "File Magic Numbers. GitHub Gist: instantly share code, notes, and snippets.",
+    "image": "https://github.githubassets.com/assets/gist-og-image-54fd7dc0713e.png"
+  },
+  "https://www.jwt.io/": {
+    "title": "JSON Web Tokens - jwt.io",
+    "description": "JSON Web Token (JWT) is a compact URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JSON object that is digitally signed using JSON Web Signature (JWS).",
+    "image": "https://jwt.io/img/facebook-card.png"
+  },
+  "https://x.com/0xblackkk": {
+    "title": "Yassin (@0xblackkk) on X",
+    "description": "\"A bug is never just a mistake. It represents something bigger: an error in thinking that defines who you are.\"",
+    "image": "https://pbs.twimg.com/profile_images/2089921605514280960/yy9yxJJx_200x200.jpg"
+  },
+  "https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/": {
+    "title": "Critical vulnerabilities in JSON Web Token libraries",
+    "description": "Which libraries are vulnerable to attacks and how to prevent them.",
+    "image": "https://images.ctfassets.net/23aumh6u8s0i/4Q6uHmPKZjR2XVuIehcO9J/4537716dd5f5d355c8a64c16726f15c0/jwt"
+  },
+  "https://portswigger.net/kb/issues/00200901_jwt-none-algorithm-supported": {
+    "title": "JWT none algorithm supported",
+    "description": "All JSON Web Tokens should contain the \"alg\" header parameter, which specifies the algorithm that the server should use to verify the signature of the token. In addition to cryptographically strong algorithms, the JWT specification also defines the \"none\" algorithm, which can be used with \"unsecured\" (unsigned) JWTs. When this algorithm is supported on the server, it may accept tokens that have no signature at all.",
+    "image": "https://portswigger.net/content/images/logos/portswigger-twittercardlogo.png"
+  },
+  "https://portswigger.net/web-security/cross-site-scripting/stored": {
+    "title": "What is stored XSS (cross-site scripting)? Tutorial & Examples | Web Security Academy",
+    "description": "In this section, we&#x27;ll explain stored cross-site scripting, describe the impact of stored XSS attacks, and spell out how to find stored XSS vulnerabilities. ...",
+    "image": "https://portswigger.net/content/images/logos/academy-twittercard.png"
+  },
+  "https://www.vaadata.com/blog/jwt-json-web-token-vulnerabilities-common-attacks-and-security-best-practices/": {
+    "title": "JWT: Vulnerabilities, Attacks & Security Best Practices",
+    "description": "This article explains how JWT (JSON Web Token) works. It also details the vulnerabilities, attacks and best practices to secure the Implementation of JWT.",
+    "image": "https://www.vaadata.com/wp-content/uploads/2025/12/COMPO-PIXELS.svg"
+  },
+  "https://www.mobilehackinglab.com/course/lab-guess-me": {
+    "title": "Lab - Guess Me",
+    "description": "Exploit deep links",
+    "image": "https://lwfiles.mycourse.app/63942c32c9a203516ce07c09-public/d330d8eb54e671eb335993ca0f1a6f04.png"
+  },
+  "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies": {
+    "title": "Using HTTP cookies - HTTP | MDN",
+    "description": "A cookie (also known as a web cookie or browser cookie) is a small piece of data a server sends to a user's web browser. The browser may store cookies, create new cookies, modify existing ones, and send them back to the same server with later requests. Cookies enable web applications to store limited amounts of data and remember state information; by default the HTTP protocol is stateless.",
+    "image": "https://developer.mozilla.org/mdn-social-image.46ac2375.png"
+  },
+  "https://www.bigbinary.com/blog/what-is-jsonp": {
+    "title": "What is JSONP?",
+    "description": "Browsers do not allow cross domain AJAX request. JSONP can be used to get around this issue. This blog discusses what JSONP is and how to use it.",
+    "image": "https://www.bigbinary.com/blog/images/social_preview_images/generated/what-is-jsonp.png"
+  },
+  "https://attack.mitre.org/techniques/T1027/016/": {
+    "title": "Obfuscated Files or Information: Junk Code Insertion, Sub-technique T1027.016 - Enterprise | MITRE ATT&CK&reg;",
+    "description": "",
+    "image": ""
+  },
+  "https://portswigger.net/web-security/access-control/idor": {
+    "title": "Insecure direct object references (IDOR) | Web Security Academy",
+    "description": "In this section, we will explain what insecure direct object references (IDOR) are and describe some common vulnerabilities. What are insecure direct object ...",
+    "image": "https://portswigger.net/content/images/logos/academy-twittercard.png"
+  },
+  "https://radiantsec.io/docs/redteam/bypass-amsi/": {
+    "title": "AMSI Bypass Techniques",
+    "description": "\r\n    Seven AMSI bypass techniques covering reflection, byte patching, context corruption, ETW suppression, and hardware breakpoints, with detection guidance.\r\n  ",
+    "image": "https://radiantsec.io/images/og-base_hu_969308ecc98024fc.png"
+  },
+  "https://www.intigriti.com/blog/news/idor-a-complete-guide-to-exploiting-advanced-idor-vulnerabilities": {
+    "title": "IDOR: A complete guide to exploiting advanced IDOR vulnerabilities",
+    "description": "IDOR —short for insecure direct object reference— vulnerabilities are one of the most commonly found web security vulnerabilities in modern web applications and APIs. It is no wonder that they are oft...",
+    "image": "https://www.datocms-assets.com/85623/1719553193-intigriti-blog-tools-featured-idor.jpg?auto=format&fit=max&w=1200"
+  },
+  "https://github.com/statamic/cms/security/advisories/GHSA-wh3h-gvc4-cc2g": {
+    "title": "Missing authorization check on taxonomy term creation via fieldtype",
+    "description": "### Impact\r\n\r\nLow-privileged Control Panel users could create taxonomy terms by submitting requests to the field action processing endpoint with attacker-controlled field definitions. This bypasses...",
+    "image": "https://opengraph.githubassets.com/3a3a7a6c79fbe62417bbd381862332e9630c78b3de695437363d35bb20ed95e1/statamic/cms/security/advisories/GHSA-wh3h-gvc4-cc2g"
+  },
+  "https://github.com/statamic/cms/pull/14274": {
+    "title": "[5.x] Prevent term creation via fieldtype without permission by duncanmcclean · Pull Request #14274 · statamic/cms",
+    "description": "This prevents terms being created via the fieldtype if you don't have permission to do so.",
+    "image": "https://opengraph.githubassets.com/71cc6295464a0f84693a676ddc6a73c12479209538bcde447ed4d636c39513f3/statamic/cms/pull/14274"
+  },
+  "https://www.detectiteasy.com/download-for-windows": {
+    "title": "Detect It Easy Download For Windows | Free & Safe File Analyzer",
+    "description": "Download the official portable version of Detect It Easy for Windows. A powerful open-source binary analysis and packer detection tool.",
+    "image": "https://www.detectiteasy.com/img/software-logo.webp"
+  },
+  "https://github.com/everythingBlackkk/Youtube_C2": {
+    "title": "GitHub - everythingBlackkk/Youtube_C2",
+    "description": "Contribute to everythingBlackkk/Youtube_C2 development by creating an account on GitHub.",
+    "image": "https://opengraph.githubassets.com/bc1a2684247c28b2f80ac46d3da7a067f49fe13052a88ba8b13bca458331fe30/everythingBlackkk/Youtube_C2"
+  },
+  "https://www.microsoft.com/en-us/security/blog/2025/05/21/lumma-stealer-breaking-down-the-delivery-techniques-and-capabilities-of-a-prolific-infostealer/": {
+    "title": "Lumma Stealer: Breaking down the delivery techniques and capabilities of a prolific infostealer | Microsoft Security Blog",
+    "description": "Over the past year, Microsoft Threat Intelligence observed the persistent growth and operational sophistication of Lumma Stealer, an info-stealing malware used by multiple financially motivated threat actors to target various industries. Microsoft, partnering with others across industry and international law enforcement, facilitated the disruption of Lumma infrastructure.",
+    "image": "https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2025/05/Lumma-Stealer-featured-1024x575.png"
+  },
+  "https://youtu.be/RCC8hxWYN-A": {
+    "title": "POC - CMS",
+    "description": "يمكنك الاستمتاع بالفيديوهات والموسيقى التي تحبها وتحميل المحتوى الأصلي ومشاركته بكامله مع أصدقائك وأفراد عائلتك والعالم أجمع على YouTube.",
+    "image": "https://i.ytimg.com/vi/RCC8hxWYN-A/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGEAgXChyMA8=&rs=AOn4CLAtx73nzEbhByIBjnBeNMExBbLWzg"
+  },
+  "https://www.geeksforgeeks.org/reactjs/what-are-single-page-apps/": {
+    "title": "What are Single Page Apps? - GeeksforGeeks",
+    "description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more.",
+    "image": "https://media.geeksforgeeks.org/wp-content/uploads/20240726124329/Architechture-Of-SPA.webp"
+  },
+  "https://console.cloud.google.com": {
+    "title": "Google Cloud Platform",
+    "description": "Google Cloud Platform lets you build, deploy, and scale applications, websites, and services on the same infrastructure as Google.",
+    "image": ""
+  },
+  "https://www.youtube.com/watch?v=1gbaS6uZ-d8": {
+    "title": "web security | injection vulnerability & source code review بالعربي",
+    "description": "My Account :)My Blog : https://everythingblackkk.gitbook.io/everythingblackkkLinkedin : https://www.linkedin.com/in/everythingblac...Github : https://github....",
+    "image": "https://i.ytimg.com/vi/1gbaS6uZ-d8/maxresdefault.jpg"
+  },
+  "https://www.youtube.com/watch?v=sYJy7sOz_Sw": {
+    "title": "كيفية عمل GraphQL server مع الـ Nodejs و Expressjs - سيمي كولون | SemiColon",
+    "description": "تم نشر هذا الفيديو للمرة الاولي في يوم ٥-٣-٢٠١٨لينك تتعلم منه الـ Mutation بنفسك:https://goo.gl/n4WF4Xلينك للـ repository بتاع المشروع بتاع ال words على gith...",
+    "image": "https://i.ytimg.com/vi/sYJy7sOz_Sw/maxresdefault.jpg"
+  },
+  "https://graphql.org/learn/execution/": {
+    "title": "Execution | GraphQL",
+    "description": "",
+    "image": "https://graphql-github-ehsdw0g9p-the-graph-ql-foundation.vercel.app/img/og-logo.png"
+  },
+  "https://graphql.org/learn/validation/": {
+    "title": "Validation | GraphQL",
+    "description": "",
+    "image": "https://graphql-github-ehsdw0g9p-the-graph-ql-foundation.vercel.app/img/og-logo.png"
+  },
+  "https://everythingblackkk.gitbook.io/everythingblackkk/web-development-and-technologies/graphql-vs-rest": {
+    "title": "GraphQL VS REST | everythingBlackkk",
+    "description": "",
+    "image": "https://everythingblackkk.gitbook.io/everythingblackkk/~gitbook/ogimage/DxRVptGz5l48OjlUF2BB"
+  },
+  "https://www.apollographql.com/tutorials/lift-off-part1/03-schema-definition-language-sdl": {
+    "title": "SDL - GraphQL Schema Definition Language",
+    "description": "Live data, resolvers, and data sources",
+    "image": "https://res.cloudinary.com/apollographql/image/upload/w_1280,h_669,c_fill,q_auto,f_auto/w_760,c_fit,co_rgb:1A202C,g_south_west,x_480,y_254,l_text:odyssey:fonts:AeonikBold.otf_60_bold:SDL%20-%20GraphQL%20Schema%20Definition%20Language/w_760,c_fit,co_rgb:1A202C,g_north_west,x_480,y_445,l_text:odyssey:fonts:InterRegular.ttf_36:Live%20data%252C%20resolvers%252C%20and%20data%20sources/l_fetch:aHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vYXBvbGxvZ3JhcGhxbC9pbWFnZS91cGxvYWQvdjE3MDI5MjgwOTMvb2R5c3NleS9jb3Vyc2UtYXNzZXRzLW5ldy1icmFuZC9MT19jb3Vyc2VfdGh1bWJfYmVpZ2VfdHR2dHo0LnN2Zw==,w_400,h_669,g_south_west,c_fill,e_colorize,co_rgb:C74100/odyssey_template_base_w_illustration_b4ovtn"
+  },
+  "https://www.youtube.com/watch?v=E9yyhxzxeok&t=171s&ab_channel=Ebrahem": {
+    "title": "47- شرح 15 طريقة لإكتشاف ثغرات في صفحات ال file upload",
+    "description": "The English version of the video: https://www.youtube.com/watch?v=CmF9sEyKZNoملفات الشرح والسلايدز يمكنك الحصول عليها هنا:https://github.com/zigoo0/ArabicWeb...",
+    "image": "https://i.ytimg.com/vi/E9yyhxzxeok/maxresdefault.jpg"
+  },
+  "https://www.youtube.com/watch?v=PKO9PzHP4pA&t=3173s&ab_channel=ARABSECLAB": {
+    "title": "file upload vulnerability LAB arabic  عربي شرح ثغره",
+    "description": "how to exploit #file #upload #Vulnerability ? How to Discover #checking #mechanism on file upload ? How to bypass file upload #restrictions? how to chain mul...",
+    "image": "https://i.ytimg.com/vi/PKO9PzHP4pA/maxresdefault.jpg"
+  },
+  "https://www.youtube.com/watch?v=hIkHipax3IY&t=12s": {
+    "title": "- YouTube",
+    "description": "يمكنك الاستمتاع بالفيديوهات والموسيقى التي تحبها وتحميل المحتوى الأصلي ومشاركته بكامله مع أصدقائك وأفراد عائلتك والعالم أجمع على YouTube.",
+    "image": ""
+  },
+  "https://www.youtube.com/watch?v=LHFzBv85EUc&t=615s&ab_channel=MohamedSayed": {
+    "title": "06- Vulnerabilities - File Upload",
+    "description": "اتمني ان شاء الله يكون الفيديو مفيد لو في حاجة ناقصة او غلط اتقالت ياريت تفيدني  بيها في كومنت ونضيفها بيحث الكل يستفاد, وشكراLabs: https://github.com/flex0g...",
+    "image": "https://i.ytimg.com/vi/LHFzBv85EUc/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGFogWihaMA8=&rs=AOn4CLDOfD9MT8vCzk13TwSfWnzj6fZU5w"
+  },
+  "https://statamic.com/": {
+    "title": "Statamic — the answer to your frustrating CMS problems.",
+    "description": "Statamic supports your entire team with an award-winning user experience, a kind-hearted community, and all the power of Laravel at your fingertips.",
+    "image": "https://statamic.com/social-image?page_url=%2F"
+  },
+  "https://www.youtube.com/watch?v=ZWG1nNdUnBc&ab_channel=RyanJohn": {
+    "title": "File Upload Vulnerabilities & Filter Bypass",
+    "description": "All my videos are for educational purposes with bug bounty hunters and penetration testers in mind YouTube don't take down my videos 😉🐦Follow me on Twitter...",
+    "image": "https://i.ytimg.com/vi/ZWG1nNdUnBc/maxresdefault.jpg"
+  },
+  "https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload": {
+    "title": "Unrestricted File Upload | OWASP Foundation",
+    "description": "Unrestricted File Upload on the main website for The OWASP Foundation. OWASP is a nonprofit foundation that works to improve the security of software.",
+    "image": "https://community.owasp.org/favicon.ico"
+  },
+  "https://github.com/everythingBlackkk/\\\\": {
+    "title": "everythingBlackkk - Overview",
+    "description": "Nothing is safe from hacking, so here I am. everythingBlackkk has 16 repositories available. Follow their code on GitHub.",
+    "image": "https://avatars.githubusercontent.com/u/142638957?v=4?s=400"
+  },
+  "https://book.hacktricks.wiki/en/pentesting-web/file-upload/index.html": {
+    "title": "File Upload - HackTricks",
+    "description": "If they apply, the check the previous extensions. Also test them using some uppercase letters : pHp, .pHP5, .PhAr …",
+    "image": "https://hacktricks.wiki/en/images/HACKTRICKS-logo.svg"
+  },
+  "https://mcl-labcas.jpl.nasa.gov/labcas-ui/m/index.html": {
+    "title": "",
+    "description": "",
+    "image": ""
+  },
+  "https://everythingblackkk.gitbook.io/everythingblackkk": {
+    "title": "whoami | everythingBlackkk",
+    "description": "",
+    "image": "https://everythingblackkk.gitbook.io/everythingblackkk/~gitbook/ogimage/kzTlst3tKo255yz4YpDi"
+  }
+}

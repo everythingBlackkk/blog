@@ -7,6 +7,7 @@ import {
   Code2, ContactRound, FileUser, House, Menu, Search, Terminal, X,
 } from 'lucide-react';
 import manifest from './content-manifest.json';
+import linkPreviews from './link-previews.json';
 
 const contentFiles = import.meta.glob('./content/*.md', { eager: true, query: '?raw', import: 'default' });
 const articles = manifest.map((article) => ({ ...article, content: contentFiles[`./content/${article.slug}.md`] }));
@@ -31,8 +32,18 @@ const homeArticles = [
 ];
 
 function useRoute() {
-  const getRoute = () => window.location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
+  const getRoute = () => {
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    if (window.location.hash) return hash.split('/').filter(Boolean);
+    const match = window.location.pathname.match(/\/article\/([^/]+)/);
+    return match ? ['article', match[1]] : [];
+  };
   const [route, setRoute] = useState(getRoute);
+  useEffect(() => {
+    if (route[0] === 'article' && window.location.hash.startsWith('#/article/')) {
+      window.history.replaceState(null, '', `/blog/article/${route[1]}/`);
+    }
+  }, [route]);
   useEffect(() => {
     const onChange = () => { setRoute(getRoute()); window.scrollTo({ top: 0, behavior: 'instant' }); };
     window.addEventListener('hashchange', onChange);
@@ -96,7 +107,7 @@ function Hero() {
           <p>Hey, I’m Yassin. I specialize in vulnerability research, actively hunting for critical security bugs across <strong>Web</strong>, <PlatformMark type="android"><strong>Android</strong></PlatformMark>, <PlatformMark type="apple"><strong>iOS</strong></PlatformMark>, and <strong>Network</strong> environments.</p>
           <p>I also work on software development, with hands-on experience building projects and creating CTF challenges. I have a good understanding of CI/CD pipelines and modern development workflows.</p>
           <p>I code in C/C++, Python, and Java. I’m always pushing myself to learn, break, and deeply understand systems.</p>
-          <p>My published disclosures include <a href="#/article/my-cve-cve-2026-27593-critical">CVE-2026-27593</a>, <a href="#/article/my-cve-cve-2026-33177-moderate">CVE-2026-33177</a>, and <a href="#/article/my-cve-cve-2026-winter">CVE-2026-35445</a>.</p>
+          <p>My published disclosures include <a href="/blog/article/my-cve-cve-2026-27593-critical/">CVE-2026-27593</a>, <a href="/blog/article/my-cve-cve-2026-33177-moderate/">CVE-2026-33177</a>, and <a href="/blog/article/my-cve-cve-2026-winter/">CVE-2026-35445</a>.</p>
           <p>Find my work on <a href="https://github.com/everythingBlackkk" target="_blank" rel="noreferrer">GitHub</a>. You can also reach me through <a href="https://www.linkedin.com/in/everythingblackkk/" target="_blank" rel="noreferrer">LinkedIn</a> or <a href="https://x.com/iyassinmo" target="_blank" rel="noreferrer">X</a>.</p>
         </div>
         <p className="whoami-signoff">I love programming and I love hacking everything that is programmed.</p>
@@ -134,7 +145,7 @@ function CveMarquee() {
         <div className="cve-marquee-track">
           {[0, 1].map((group) => (
             <div className="cve-marquee-group" aria-hidden={group === 1} key={group}>
-              {loopItems.map(({ article, number }, index) => <a href={`#/article/${article.slug}`} key={`${group}-${article.slug}-${index}`}>{number}</a>)}
+              {loopItems.map(({ article, number }, index) => <a href={`/blog/article/${article.slug}/`} key={`${group}-${article.slug}-${index}`}>{number}</a>)}
             </div>
           ))}
         </div>
@@ -146,17 +157,17 @@ function CveMarquee() {
 function ArticleCard({ article, featured = false }) {
   return (
     <article className={featured ? 'article-card featured' : 'article-card'}>
-      <a className="card-cover" href={`#/article/${article.slug}`} aria-label={`Read ${article.title}`}>
+      <a className="card-cover" href={`/blog/article/${article.slug}/`} aria-label={`Read ${article.title}`}>
         <img src={article.cover} alt="" loading="lazy" onError={(event) => { event.currentTarget.src = article.generatedCover; }} />
         <span className="cover-code">{CATEGORY_ICONS[article.category] || 'LOG'}</span>
       </a>
       <div className="card-body">
         <div className="card-meta"><a href={`#/category/${categorySlug(article.category)}`}>{article.category}</a></div>
-        <h3><a href={`#/article/${article.slug}`}>{article.title}</a></h3>
+        <h3><a href={`/blog/article/${article.slug}/`}>{article.title}</a></h3>
         <p>{article.excerpt}</p>
         <div className="card-footer">
           <div className="tag-list">{article.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
-          <a className="read-link" href={`#/article/${article.slug}`} aria-label={`Read ${article.title}`}><ArrowRight size={17} /></a>
+          <a className="read-link" href={`/blog/article/${article.slug}/`} aria-label={`Read ${article.title}`}><ArrowRight size={17} /></a>
         </div>
       </div>
     </article>
@@ -262,13 +273,32 @@ function uniqueHeadingId(text, counts) {
   return count ? `${base}-${count + 1}` : base;
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function referenceCard(url, label) {
+  if (!/^https?:\/\//i.test(url)) return '';
+  const preview = linkPreviews[url] || {};
+  const host = new URL(url).hostname;
+  const title = preview.title || label || host;
+  const image = /^https?:\/\//i.test(preview.image || '') ? `<img src="${escapeHtml(preview.image)}" alt="" loading="lazy" />` : `<span class="reference-placeholder">${escapeHtml(host)}</span>`;
+  return `<a class="reference-preview" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><span class="reference-thumbnail">${image}</span><span class="reference-copy"><strong>${escapeHtml(title)}</strong>${preview.description ? `<span class="reference-description">${escapeHtml(preview.description)}</span>` : ''}<span class="reference-url">${escapeHtml(url)}</span></span></a>`;
+}
+
 function renderMarkdown(source) {
   const withEmbeds = source.replace(/<div data-embed="([^"]+)"><\/div>/g, (_match, url) => {
     const id = youtubeId(url);
     if (id) return `<div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="YouTube reference" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
-    return `<a class="reference-card" href="${url}" target="_blank" rel="noreferrer">Open referenced resource ↗</a>`;
+    return referenceCard(url, 'Open referenced resource');
   });
   const renderer = new marked.Renderer();
+  renderer.paragraph = function paragraph({ tokens }) {
+    const links = tokens.filter((token) => token.type === 'link' && /^https?:\/\//i.test(token.href));
+    const onlyLinks = tokens.every((token) => token.type === 'link' || (token.type === 'text' && /^[\s.,;]*$/.test(token.text)));
+    const text = onlyLinks && links.length ? '' : `<p>${this.parser.parseInline(tokens)}</p>`;
+    return text + [...new Map(links.map((link) => [link.href, link])).values()].map((link) => referenceCard(link.href, link.text)).join('');
+  };
   const headingCounts = new Map();
   renderer.heading = function heading({ tokens, depth }) {
     const label = this.parser.parseInline(tokens, this.parser.textRenderer);
@@ -293,6 +323,16 @@ function MarkdownContent({ article }) {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
+    root.querySelectorAll('.reference-thumbnail img').forEach((image) => {
+      const fallback = () => {
+        const label = document.createElement('span');
+        label.className = 'reference-placeholder';
+        label.textContent = new URL(image.closest('a').href).hostname;
+        image.replaceWith(label);
+      };
+      image.addEventListener('error', fallback, { once: true });
+      if (image.complete && !image.naturalWidth) fallback();
+    });
     root.querySelectorAll('pre code').forEach((block, index) => {
       if (!block.dataset.highlighted) {
         block.textContent = block.textContent;
@@ -314,7 +354,7 @@ function MarkdownContent({ article }) {
       pre.append(button);
     });
     const onClick = (event) => {
-      if (event.target.tagName === 'IMG') setZoomed({ src: event.target.src, alt: event.target.alt });
+      if (event.target.tagName === 'IMG' && !event.target.closest('.reference-preview')) setZoomed({ src: event.target.src, alt: event.target.alt });
     };
     root.addEventListener('click', onClick);
     return () => root.removeEventListener('click', onClick);
@@ -357,8 +397,8 @@ function ArticlePage({ slug }) {
         {toc.length > 2 && <aside className="toc"><span>ON THIS PAGE</span>{toc.map((item) => <button type="button" className={`toc-${item.level}`} key={item.id} onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>{item.text}</button>)}</aside>}
       </div>
       <nav className="article-pagination page-shell" aria-label="Article pagination">
-        {previous ? <a href={`#/article/${previous.slug}`}><ArrowLeft size={18} /><span><small>Previous</small>{previous.title}</span></a> : <span />}
-        {next ? <a href={`#/article/${next.slug}`}><span><small>Next</small>{next.title}</span><ArrowRight size={18} /></a> : <span />}
+        {previous ? <a href={`/blog/article/${previous.slug}/`}><ArrowLeft size={18} /><span><small>Previous</small>{previous.title}</span></a> : <span />}
+        {next ? <a href={`/blog/article/${next.slug}/`}><span><small>Next</small>{next.title}</span><ArrowRight size={18} /></a> : <span />}
       </nav>
     </main>
   );
@@ -376,7 +416,7 @@ function SearchDialog({ open, onClose }) {
   const results = articles.filter((item) => !query || `${item.title} ${item.category} ${item.tags.join(' ')}`.toLowerCase().includes(query.toLowerCase())).slice(0, 8);
   return <div className="dialog-backdrop" onMouseDown={onClose}><div className="search-dialog" onMouseDown={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-label="Search articles">
     <div className="dialog-input"><Search size={20} /><input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search the archive…" /><button onClick={onClose}><X size={18} /></button></div>
-    <div className="dialog-results">{results.map((article) => <a href={`#/article/${article.slug}`} onClick={onClose} key={article.slug}><span className="result-icon">{CATEGORY_ICONS[article.category]}</span><span><strong>{article.title}</strong><small>{article.category}</small></span><ChevronRight size={17} /></a>)}</div>
+    <div className="dialog-results">{results.map((article) => <a href={`/blog/article/${article.slug}/`} onClick={onClose} key={article.slug}><span className="result-icon">{CATEGORY_ICONS[article.category]}</span><span><strong>{article.title}</strong><small>{article.category}</small></span><ChevronRight size={17} /></a>)}</div>
     <div className="dialog-hint"><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span><span>{articles.length} indexed articles</span></div>
   </div></div>;
 }

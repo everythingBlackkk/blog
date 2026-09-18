@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/share-pages.mjs",
     "preview": "vite preview",
-    "import:content": "node scripts/import-gitbook.mjs"
+    "import:content": "node scripts/import-gitbook.mjs",
+    "refresh:previews": "node scripts/link-previews.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
@@ -19,5 +20,7 @@
     "react-dom": "latest",
     "vite": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
 }
