@@ -1,4 +1,4 @@
-# MulMusic: Reversing a Lumma Stealer-Inspired Challenge
+# Mal Music: Reversing a Lumma Stealer-Inspired Challenge
 
 ## Introduction
 

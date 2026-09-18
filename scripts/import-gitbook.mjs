@@ -34,7 +34,7 @@ const manualSources = [
   {
     "file": "ctf-mulmusic-lumma-stealer.md",
     "slug": "ctf-mulmusic-lumma-stealer",
-    "title": "MulMusic: Reversing a Lumma Stealer-Inspired Challenge",
+    "title": "Mal Music: Reversing a Lumma Stealer-Inspired Challenge",
     "category": "CTF",
     "tags": [
       "CTF",
