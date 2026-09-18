@@ -293,7 +293,7 @@ The script also attempts to bypass AMSI.
 
 It locates the `AmsiScanBuffer` name inside the mapped `clr.dll` and overwrites that name with zeros. The intent is to interfere with the runtime's lookup of the AMSI scanning function before the next payload is loaded.
 
-[Related AMSI reference in the original Notion notes](https://app.notion.com/p/3df4a24dd79580c4844ae234b75dbb8d#3df4a24dd7958093b291e3b92f711b17).
+[Read more: AMSI Bypass Techniques](https://radiantsec.io/docs/redteam/bypass-amsi/).
 
 ### Extracting the Next Payload
 
