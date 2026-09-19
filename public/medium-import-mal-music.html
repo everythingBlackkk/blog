@@ -9,8 +9,9 @@
   <link rel="canonical" href="https://everythingblackkk.github.io/blog/article/ctf-mulmusic-lumma-stealer/">
 </head>
 <body>
-  <article><h1>Mal Music: Reversing a Lumma Stealer-Inspired Challenge</h1>
-<h2>Introduction</h2>
+  <article>
+    <img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/cover.png" alt="Mal Music — Lumma Stealer-inspired reverse engineering challenge">
+    <h2>Introduction</h2>
 <p><strong>MulMusic</strong> is a reverse engineering challenge that closely simulates a Lumma Stealer-style infection chain. The goal is to work through its layers of obfuscation, identify the command-and-control (C2) server, and submit its IP address in the format <code>flag{c2_ip}</code>.</p>
 <p>Lumma Stealer, also known as LummaC2, is an infostealer offered as malware as a service. It targets sensitive information from browsers and other applications, including saved credentials, session cookies, and cryptocurrency wallets. For background on the real malware, see Microsoft&#39;s <a href="https://www.microsoft.com/en-us/security/blog/2025/05/21/lumma-stealer-breaking-down-the-delivery-techniques-and-capabilities-of-a-prolific-infostealer/">Lumma Stealer: Breaking down the delivery techniques and capabilities of a prolific infostealer</a>.</p>
 <p>This write-up follows the challenge through five stages, starting with a file that looks like an MP3 and ending with a .NET executable containing the C2 endpoint.</p>
@@ -226,6 +227,7 @@ $script=$sr.ReadToEnd()
 </code></pre>
 <h2>Reference</h2>
 <p><a href="https://www.microsoft.com/en-us/security/blog/2025/05/21/lumma-stealer-breaking-down-the-delivery-techniques-and-capabilities-of-a-prolific-infostealer/">Microsoft Security Blog — Lumma Stealer: Breaking down the delivery techniques and capabilities of a prolific infostealer</a> (May 21, 2025).</p>
-</article>
+
+  </article>
 </body>
 </html>

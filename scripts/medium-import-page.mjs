@@ -6,10 +6,13 @@ const destination = new URL('../public/medium-import-mal-music.html', import.met
 const canonical = 'https://everythingblackkk.github.io/blog/article/ctf-mulmusic-lumma-stealer/'
 
 const markdown = await fs.readFile(source, 'utf8')
-const body = marked.parse(markdown).replaceAll(
-  'src="./images/manual/mulmusic/',
-  'src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/',
-)
+const body = marked
+  .parse(markdown)
+  .replace(/^<h1[^>]*>[\s\S]*?<\/h1>\s*/, '')
+  .replaceAll(
+    'src="./images/manual/mulmusic/',
+    'src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/',
+  )
 
 const html = `<!doctype html>
 <html lang="en">
@@ -22,7 +25,10 @@ const html = `<!doctype html>
   <link rel="canonical" href="${canonical}">
 </head>
 <body>
-  <article>${body}</article>
+  <article>
+    <img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/cover.png" alt="Mal Music — Lumma Stealer-inspired reverse engineering challenge">
+    ${body}
+  </article>
 </body>
 </html>
 `
