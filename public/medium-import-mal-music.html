@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mal Music: Reversing a Lumma Stealer-Inspired Challenge</title>
+  <meta name="author" content="everythingBlackkk">
+  <meta name="description" content="Tracing a Lumma Stealer-inspired challenge through five decoding stages to recover its C2 server.">
+  <link rel="canonical" href="https://everythingblackkk.github.io/blog/article/ctf-mulmusic-lumma-stealer/">
+</head>
+<body>
+  <article><h1>Mal Music: Reversing a Lumma Stealer-Inspired Challenge</h1>
+<h2>Introduction</h2>
+<p><strong>MulMusic</strong> is a reverse engineering challenge that closely simulates a Lumma Stealer-style infection chain. The goal is to work through its layers of obfuscation, identify the command-and-control (C2) server, and submit its IP address in the format <code>flag{c2_ip}</code>.</p>
+<p>Lumma Stealer, also known as LummaC2, is an infostealer offered as malware as a service. It targets sensitive information from browsers and other applications, including saved credentials, session cookies, and cryptocurrency wallets. For background on the real malware, see Microsoft&#39;s <a href="https://www.microsoft.com/en-us/security/blog/2025/05/21/lumma-stealer-breaking-down-the-delivery-techniques-and-capabilities-of-a-prolific-infostealer/">Lumma Stealer: Breaking down the delivery techniques and capabilities of a prolific infostealer</a>.</p>
+<p>This write-up follows the challenge through five stages, starting with a file that looks like an MP3 and ending with a .NET executable containing the C2 endpoint.</p>
+<h2>Stage 1: JavaScript Hidden Inside an MP3</h2>
+<p>At first glance, the file looks like a normal MP3. Let&#39;s open it in HxD and scroll further down to inspect more of its bytes.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/01.png" alt="MulMusic analysis screenshot 1"></p>
+<p>Interestingly, we find a <code>&lt;script&gt;</code> tag inside the MP3.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/02.png" alt="MulMusic analysis screenshot 2"></p>
+<p>Let&#39;s copy the code into a text editor so that it is easier to inspect.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/03.png" alt="MulMusic analysis screenshot 3"></p>
+<p>There is a lot of dummy JavaScript-like code, such as:</p>
+<pre><code class="language-html">&lt;script&gt;u w m f y y o e &gt;= { s h f string g&lt;/script&gt;
+&lt;script&gt;static != l class &lt;= - + u o f w d int d o - * o } z&lt;/script&gt;
+</code></pre>
+<p>These fragments do not do anything meaningful. They are junk inserted to obscure the real code and make analysis harder.</p>
+<p>Rather than reading every fragment, we can search for JavaScript functions associated with execution or decoding, such as <code>eval</code>, <code>atob</code>, <code>setTimeout</code>, and <code>decodeURI</code>.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/04.png" alt="MulMusic analysis screenshot 4"></p>
+<p>Searching for <code>eval</code> reveals the real JavaScript code:</p>
+<pre><code class="language-javascript">&lt;script&gt;
+eval(WL5TRO.replace(/(..)./g, function(match, p1) {
+  return String.fromCharCode(parseInt(p1, 16));
+}));
+&lt;/script&gt;
+</code></pre>
+<h3>Understanding the Decoder</h3>
+<p>The code reads the value of <code>WL5TRO</code> and applies the regular expression <code>/(..)./g</code>. Each match captures two characters and discards the third. For example, <code>48x65x</code> supplies the hexadecimal pairs <code>48</code> and <code>65</code>.</p>
+<p>Next, <code>parseInt(p1, 16)</code> converts each hexadecimal pair into a number. For example, <code>parseInt(&quot;48&quot;, 16)</code> returns <code>72</code>. Then <code>String.fromCharCode(72)</code> converts that number into the character <code>H</code>.</p>
+<p>Finally, <code>eval</code> executes the decoded content. To move to the next stage, we need to find the value of <code>WL5TRO</code> and decode it.</p>
+<p>Let&#39;s search for the variable in HxD.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/05.png" alt="MulMusic analysis screenshot 5"></p>
+<p>We find the encoded hexadecimal string. Its beginning looks like this:</p>
+<pre><code class="language-javascript">var WL5TRO = &#39;76s61w72c20i61m3dl5by35v33d33r2cu20t35.............
+</code></pre>
+<p>Let&#39;s copy the value into <code>WL5TRO.txt</code> and decode it with a Python script using the same logic as the JavaScript decoder.</p>
+<h2>Stage 2: From JavaScript to Encrypted PowerShell</h2>
+<p>After decoding, we recover the following JavaScript:</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/06.png" alt="MulMusic analysis screenshot 6"></p>
+<pre><code class="language-javascript">var a = [533, 532, 540, 522, 535, ...];
+
+for(; i &lt; a.length;)
+    c += String.fromCharCode(a[i++] - 421);
+
+new ActiveXObject(&#39;WScript.Shell&#39;).Run(c);
+</code></pre>
+<p>The loop walks through array <code>a</code>, subtracts <code>421</code> from each value, converts the result into a character, and appends it to variable <code>c</code>. For example:</p>
+<pre><code class="language-text">533 - 421 = 112 = &#39;p&#39;
+532 - 421 = 111 = &#39;o&#39;
+</code></pre>
+<h3>What ActiveXObject Does</h3>
+<p><code>ActiveXObject(...)</code> creates and uses a COM object from JavaScript on Windows. Here, the script requests an object with the ProgID <code>WScript.Shell</code>. Windows looks up that ProgID in the registry, and the script uses <code>.Run(c)</code> to run the decoded command.</p>
+<p><code>WScript.Shell</code> gives the script access to Windows shell features. You can find its ProgID under:</p>
+<pre><code class="language-text">HKEY_CLASSES_ROOT\WScript.Shell
+</code></pre>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/07.png" alt="MulMusic analysis screenshot 7"></p>
+<p>Now that we understand the encoding, let&#39;s decode array <code>a</code> and inspect the next stage.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/08.png" alt="MulMusic analysis screenshot 8"></p>
+<p>The result is a large, obfuscated PowerShell command. It includes these arguments:</p>
+<ul>
+<li><code>-w h</code>: Hide the PowerShell window.</li>
+<li><code>-ep Unrestricted</code>: Relax the PowerShell execution policy.</li>
+<li><code>-nop</code>: Do not load the PowerShell profile.</li>
+</ul>
+<p>These options help the command run less visibly. The script also contains this function:</p>
+<pre><code class="language-powershell">function djoI($bMcq){
+    -split($bMcq -replace &#39;..&#39;, &#39;0x$&amp; &#39;)
+}
+</code></pre>
+<p>The variable and function names are also obfuscated. The encoded payload is stored in <code>jEoLV</code>, while <code>djoI</code> formats pairs of hexadecimal characters as byte values, for example:</p>
+<pre><code class="language-text">96 -&gt; 0x96
+</code></pre>
+<p>Let&#39;s scroll further down to understand how the payload is processed.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/09.png" alt="MulMusic analysis screenshot 9"></p>
+<h3>1. Create the AES Cipher</h3>
+<pre><code class="language-powershell">$aes=[Security.Cryptography.Aes]::Create()
+$aes.Mode=&#39;CBC&#39;
+$aes.Padding=&#39;None&#39;
+</code></pre>
+<p>The script creates an AES cipher in <strong>CBC mode</strong>. Padding is disabled because the script removes it manually later.</p>
+<h3>2. Create the Decryptor</h3>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/10.png" alt="MulMusic analysis screenshot 10"></p>
+<pre><code class="language-powershell">$decryptor=$aes.CreateDecryptor(
+    @(djoI(&#39;7075554B5A64747A43524D6571765948&#39;)),
+    [byte[]]::new(16)
+)
+</code></pre>
+<p><code>djoI(...)</code> converts the hexadecimal string into the AES key. Interpreted as ASCII, the key is <code>puUKZdtzCRMeqvYH</code>. The expression <code>[byte[]]::new(16)</code> creates a 16-byte IV filled with zeros.</p>
+<h3>3. Decrypt the Payload</h3>
+<pre><code class="language-powershell">$decrypted=$decryptor.TransformFinalBlock($jEoLV,0,$jEoLV.Length)
+</code></pre>
+<p>This decrypts the encrypted data stored in <code>$jEoLV</code>.</p>
+<h3>4. Remove the Padding</h3>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/11.png" alt="MulMusic analysis screenshot 11"></p>
+<pre><code class="language-powershell">$pad=$decrypted[$decrypted.Length-1]
+$unpadded=$decrypted[0..($decrypted.Length-$pad-1)]
+</code></pre>
+<p>The script reads the last byte as the padding length and removes that many bytes.</p>
+<h3>5. Load the Decrypted Data into Memory</h3>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/12.png" alt="MulMusic analysis screenshot 12"></p>
+<pre><code class="language-powershell">$ms=[System.IO.MemoryStream]::new([byte[]]$unpadded)
+</code></pre>
+<p>This places the decrypted payload into an in-memory stream, allowing the next steps to process it without writing it to disk.</p>
+<h3>6. Decompress the GZIP Data</h3>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/13.png" alt="MulMusic analysis screenshot 13"></p>
+<pre><code class="language-powershell">$gzip=New-Object IO.Compression.GzipStream(...)
+$sr=New-Object IO.StreamReader($gzip)
+$script=$sr.ReadToEnd()
+</code></pre>
+<p>The script decompresses the decrypted data and reads the resulting PowerShell script as text.</p>
+<h3>7. Execute the Recovered Script</h3>
+<pre><code class="language-powershell">&amp; $script.Substring(0,3) $script.Substring(3)
+</code></pre>
+<p>This takes the first three characters as a command and passes the remaining text as its argument.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/14.png" alt="MulMusic analysis screenshot 14"></p>
+<p>For example, if the recovered text begins with:</p>
+<pre><code class="language-text">iex&lt;PowerShell code&gt;
+</code></pre>
+<p>It effectively behaves like:</p>
+<pre><code class="language-powershell">iex &quot;&lt;PowerShell code&gt;&quot;
+</code></pre>
+<p>The overall flow is:</p>
+<p><strong>Encrypted bytes → AES-CBC decryption → Padding removal → GZIP decompression → PowerShell recovery → In-memory execution</strong></p>
+<h2>Stage 3: Unpacking the XOR Layer</h2>
+<p>This is the PowerShell script that the previous stage loads into memory.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/15.png" alt="MulMusic analysis screenshot 15"></p>
+<p>It is a large script containing many lines of junk code and obfuscation. For more background, see <a href="https://attack.mitre.org/techniques/T1027/016/">Junk Code Insertion — MITRE ATT&amp;CK T1027.016</a>.</p>
+<p>Let&#39;s keep scrolling until we find something interesting.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/16.png" alt="MulMusic analysis screenshot 16"></p>
+<p>We find a byte array named <code>kcMrSOkblJXfYSlRotOdB</code>. Let&#39;s search for that name to see where it is used.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/17.png" alt="MulMusic analysis screenshot 17"></p>
+<p>There is also a variable named <code>eKXCNQlUlOmSwCy</code> that contains an obfuscated string construction. After deobfuscation, it resolves to:</p>
+<pre><code class="language-powershell">$yJnBuUCkdg.Length
+</code></pre>
+<p>The script needs the length of <code>yJnBuUCkdg</code>.</p>
+<p>Another useful clue is the Russian comment <code># Ключ</code> on the line defining <code>ZohLcP</code>:</p>
+<pre><code class="language-powershell">$ZohLcP = ($zNfeqTmNMVjC -as [Type])::$RzBEsmYJFJvleMLWMRDc.$OYAFXSgXr(&quot;$vLnPQPwjqzlmXBcocZcj&quot;); # Ключ
+</code></pre>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/18.png" alt="MulMusic analysis screenshot 18"></p>
+<p>The comment translates to <strong>“Key”</strong>.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/19.png" alt="MulMusic analysis screenshot 19"></p>
+<p>We also find the variable <code>yJnBuUCkdg</code>:</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/20.png" alt="MulMusic analysis screenshot 20"></p>
+<pre><code class="language-powershell">$yJnBuUCkdg = ($zNfeqTmNMVjC -as [Type])::$RzBEsmYJFJvleMLWMRDc.$OYAFXSgXr(($zNfeqTmNMVjC -as [Type])::$RzBEsmYJFJvleMLWMRDc.$ftvmUrMVeGqhcbfY(($yFtahBVHR -as [Type])::$HpHDXHEbXHRsmLz(($zNfeqTmNMVjC -as [Type])::$RzBEsmYJFJvleMLWMRDc.$ftvmUrMVeGqhcbfY($kcMrSOkblJXfYSlRotOdB))));
+</code></pre>
+<p>This is important because it uses the byte array <code>kcMrSOkblJXfYSlRotOdB</code> that we found earlier. It converts that array into a string, Base64-decodes the string, and stores the resulting bytes in <code>yJnBuUCkdg</code>.</p>
+<p>The last line brings these pieces together:</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/21.png" alt="MulMusic analysis screenshot 21"></p>
+<p>It XORs the decoded payload in <code>yJnBuUCkdg</code> with the key in <code>ZohLcP</code>:</p>
+<pre><code class="language-powershell">$yJnBuUCkdg[$i] -bxor $ZohLcP[$j]
+</code></pre>
+<p>Let&#39;s apply that operation and extract the result.</p>
+<h2>Stage 4: AMSI Bypass and an In-Memory .NET Assembly</h2>
+<p>After XOR decoding, the result is another <code>.ps1</code> file.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/22.png" alt="MulMusic analysis screenshot 22"></p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/23.png" alt="MulMusic analysis screenshot 23"></p>
+<p>The script loads <code>WriteProcessMemory</code> from <code>kernel32.dll</code> to write to process memory. It also calls APIs such as <code>VirtualProtect</code> to change memory permissions and <code>GetCurrentProcess</code> to obtain a handle to the current process.</p>
+<h3>The AMSI Bypass Attempt</h3>
+<p>The script also attempts to bypass AMSI.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/24.png" alt="MulMusic analysis screenshot 24"></p>
+<p>It locates the <code>AmsiScanBuffer</code> name inside the mapped <code>clr.dll</code> and overwrites that name with zeros. The intent is to interfere with the runtime&#39;s lookup of the AMSI scanning function before the next payload is loaded.</p>
+<p><a href="https://radiantsec.io/docs/redteam/bypass-amsi/">Read more: AMSI Bypass Techniques</a>.</p>
+<h3>Extracting the Next Payload</h3>
+<p>Further down, variable <code>a</code> contains a Base64 blob that appears to be the next stage.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/25.png" alt="MulMusic analysis screenshot 25"></p>
+<p>At the end of the file, we find the code that handles it:</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/26.png" alt="MulMusic analysis screenshot 26"></p>
+<p>First, it Base64-decodes <code>a</code>:</p>
+<pre><code class="language-powershell">$bytes = [System.Convert]::FromBase64String($a)
+</code></pre>
+<p>The decoded bytes begin with <code>MZ</code>, suggesting a Windows executable or DLL.</p>
+<p>Next, it loads those bytes as a .NET assembly into the current PowerShell process:</p>
+<pre><code class="language-powershell">[Reflection.Assembly]$assembly=
+    [System.AppDomain]::CurrentDomain.Load($bytes)
+</code></pre>
+<p>It then finds the assembly&#39;s entry point and invokes it:</p>
+<pre><code class="language-powershell">$entryPoint.Invoke($null, $args)
+</code></pre>
+<p>This runs the entry point without first writing the executable to disk. Let&#39;s extract the executable from the Base64 blob for analysis.</p>
+<p>The AMSI bypass attempt comes first because the payload may be scanned during loading or execution. The script tries to interfere with scanning before executing the assembly in memory.</p>
+<h2>Stage 5: Finding the C2 Server</h2>
+<p>After extracting the executable, we can inspect it in <a href="https://www.detectiteasy.com/download-for-windows">Detect It Easy (DIE)</a> to learn more about it.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/27.png" alt="MulMusic analysis screenshot 27"></p>
+<p>As expected, it is a .NET executable. Let&#39;s open it in <strong>dnSpy</strong>, a free, open-source .NET debugger and assembly editor.</p>
+<h3>A Note on .NET Decompilation</h3>
+<p>.NET binaries are generally easier to decompile than native C or C++ binaries because they retain intermediate language (IL) and metadata.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/28.png" alt="MulMusic analysis screenshot 28"></p>
+<p>The CLR runtime JIT-compiles that IL into native code when the program runs. Tools such as dnSpy and ILSpy read the IL and metadata and reconstruct readable C#. Names and structure often remain available unless the assembly has been obfuscated.</p>
+<h3>Inspecting the Stealer Class</h3>
+<p>Back to the analysis: opening the executable in dnSpy reveals a class named <code>Stealer</code>. It contains several functions that explain the malware&#39;s activity.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/29.png" alt="MulMusic analysis screenshot 29"></p>
+<p>The sample behaves as an information stealer: it targets browser cookies and saved passwords and sends the collected information to the attacker&#39;s C2 server.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/30.png" alt="MulMusic analysis screenshot 30"></p>
+<p>The required flag format is <code>flag{c2_ip}</code>, so our goal is to recover the C2 IP address.</p>
+<p><img src="https://everythingblackkk.github.io/blog/images/manual/mulmusic/31.png" alt="MulMusic analysis screenshot 31"></p>
+<p>We find a function named <code>SendDataToC2</code>. It takes the input <code>data</code>, converts it into UTF-8 bytes, and Base64-encodes it.</p>
+<p>It also calls <code>Hwapiazdxb()</code>, which returns a hardcoded 32-byte AES key decoded from Base64. The randomly generated AES key is unused.</p>
+<pre><code class="language-csharp">public static byte[] Hwapiazdxb()
+{
+    byte[] array;
+    using (Aes aes = Aes.Create())
+    {
+        aes.GenerateKey();
+        array = Convert.FromBase64String(&quot;iVQmR3uTrEOKSm3NBzv6OAXoM6/5jwNoXrN9Mc4/3BE=&quot;);
+    }
+    return array;
+}
+</code></pre>
+<p><code>SendDataToC2()</code> uses this key and its first 16 bytes as the IV to decrypt the embedded C2 URL. It then sends the Base64-encoded collected data to that endpoint.</p>
+<p>Recovered C2:</p>
+<pre><code class="language-text">hxxps://133[.]107[.]28[.]163/uploadData
+</code></pre>
+<h3>Final Flag</h3>
+<pre><code class="language-text">flag{133.107.28.163}
+</code></pre>
+<h2>Reference</h2>
+<p><a href="https://www.microsoft.com/en-us/security/blog/2025/05/21/lumma-stealer-breaking-down-the-delivery-techniques-and-capabilities-of-a-prolific-infostealer/">Microsoft Security Blog — Lumma Stealer: Breaking down the delivery techniques and capabilities of a prolific infostealer</a> (May 21, 2025).</p>
+</article>
+</body>
+</html>
