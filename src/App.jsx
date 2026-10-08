@@ -8,6 +8,9 @@ import {
 } from 'lucide-react';
 import manifest from './content-manifest.json';
 import linkPreviews from './link-previews.json';
+import AsciiAurora from './AsciiAurora';
+import AsciiDevices from './AsciiDevices';
+import './ascii.css';
 
 const contentFiles = import.meta.glob('./content/*.md', { eager: true, query: '?raw', import: 'default' });
 const articles = manifest.map((article) => ({ ...article, content: contentFiles[`./content/${article.slug}.md`] }));
@@ -471,5 +474,5 @@ export default function App() {
   else if (route[0] === 'categories') page = <CategoriesPage />;
   else if (route[0] === 'category') page = <CategoryPage slug={route[1]} />;
   else if (route.length) page = <NotFound />;
-  return <><div className="ambient" /><Header openSearch={() => setSearchOpen(true)} />{page}<Footer /><FloatingNav /><SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} /></>;
+  return <><div className="ambient" />{!route.length && <AsciiAurora />}<Header openSearch={() => setSearchOpen(true)} />{page}<Footer />{!route.length && <AsciiDevices />}<FloatingNav /><SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} /></>;
 }
