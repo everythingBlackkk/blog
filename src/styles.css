@@ -44,7 +44,7 @@ button { color: inherit; }
 .page-shell.narrow { width: min(860px, calc(100% - 44px)); }
 
 .site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--line); background: rgba(11, 11, 11, .8); backdrop-filter: blur(18px); }
-.header-inner { width: min(1180px, calc(100% - 44px)); height: 68px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.header-inner { width: min(1180px, calc(100% - 44px)); height: 68px; margin: auto; display: none; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: -.02em; }
 .brand > span:last-child > span { color: var(--muted); font-weight: 500; }
 .brand-mark { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.16); border-radius: 9px; color: var(--accent); background: var(--accent-soft); }
