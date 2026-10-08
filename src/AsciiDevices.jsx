@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import AsciiConnections from './AsciiConnections';
 
 const DEVICES = [
   { id: 'terminal', name: 'Desktop computer', x: 0.015, y: 0.3, mobileX: 0.02, mobileY: 0.02, art: String.raw`
@@ -59,11 +60,22 @@ const DEVICES = [
 ];
 
 const clamp = (value, max) => Math.max(0, Math.min(value, Math.max(0, max)));
+const SCREEN_TOKENS = /(\$ whoami|yassin_|< hello \/>|ready to go_|09:41|> PLAY|\[====\]| o )/g;
+const GLOWS = ['#a5ecc1', '#9bd4e6', '#e3c28f', '#c0b0ee', '#93deb0'];
+
+function DeviceArt({ art }) {
+  return art.trimEnd().replace(/^\n/, '').split(SCREEN_TOKENS).map((part, index) => {
+    if (index % 2 === 0) return part;
+    if (part === ' o ') return <span className="device-led" key={index}>{part}</span>;
+    return <span className="device-screen" key={index}>{part.endsWith('_') ? <>{part.slice(0, -1)}<span className="device-cursor">_</span></> : part}</span>;
+  });
+}
 
 export default function AsciiDevices() {
   const stageRef = useRef(null);
   const elements = useRef(new Map());
   const positions = useRef(new Map());
+  const redrawConnections = useRef(() => {});
   const moved = useRef(new Set());
   const drag = useRef(null);
   const [active, setActive] = useState(null);
@@ -79,6 +91,7 @@ export default function AsciiDevices() {
     positions.current.set(id, { ...next, ratioX: maxX > 0 ? next.x / maxX : 0, ratioY: maxY > 0 ? next.y / maxY : 0 });
     element.style.setProperty('--device-x', `${next.x}px`);
     element.style.setProperty('--device-y', `${next.y}px`);
+    redrawConnections.current();
   };
 
   const arrange = (reset = false) => {
@@ -158,12 +171,13 @@ export default function AsciiDevices() {
       <button className="workbench-reset" onClick={reset} aria-label="Reset device positions">[ reset ]</button>
     </div>
     <div ref={stageRef} className={`device-stage${active ? ' is-dragging' : ''}`}>
+      <AsciiConnections elements={elements} positions={positions} redrawRef={redrawConnections} />
       <pre className="workbench-grid" aria-hidden="true">{Array.from({ length: 6 }, () => '.      '.repeat(40)).join('\n')}</pre>
       {DEVICES.map((device, index) => <button
         key={device.id}
         ref={(element) => { if (element) elements.current.set(device.id, element); else elements.current.delete(device.id); }}
         className={`ascii-device${active === device.id ? ' is-held' : ''}`}
-        style={{ '--float-delay': `${-index * 1.7}s` }}
+        style={{ '--float-delay': `${-index * 1.7}s`, '--device-glow': GLOWS[index] }}
         aria-label={`Move ${device.name.toLowerCase()}`}
         aria-describedby="device-instructions device-keyboard-help"
         onPointerDown={(event) => startDrag(event, device)}
@@ -172,7 +186,7 @@ export default function AsciiDevices() {
         onPointerCancel={endDrag}
         onLostPointerCapture={endDrag}
         onKeyDown={(event) => moveWithKeys(event, device)}
-      ><span className="device-drawing"><pre aria-hidden="true">{device.art.trimEnd().replace(/^\n/, '')}</pre><span className="device-name" aria-hidden="true">{device.name}</span></span></button>)}
+      ><span className="device-drawing"><pre aria-hidden="true"><DeviceArt art={device.art} /></pre><span className="device-name" aria-hidden="true"><span className="device-index">0{index + 1} / </span>{device.name}</span></span></button>)}
     </div>
     <span id="device-keyboard-help" className="ascii-sr-only">Hold Shift for larger steps. Press Home to restore this device, or use Reset to restore all devices.</span>
     <span className="ascii-sr-only" role="status" aria-live="polite">{announcement}</span>
