@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 // An original landscape drawn entirely with monospace ASCII characters.
 const INK = ' .,:;+=*#%@';
@@ -89,7 +89,6 @@ function paintLandscape(canvas, width, height, time) {
 export default function AsciiAurora() {
   const canvasRef = useRef(null);
   const phaseRef = useRef(0);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -114,7 +113,7 @@ export default function AsciiAurora() {
       cancelAnimationFrame(frame);
       last = 0;
       draw();
-      if (visible && !document.hidden && !paused && !media.matches) frame = requestAnimationFrame(tick);
+      if (visible && !document.hidden && !media.matches) frame = requestAnimationFrame(tick);
     };
     const resize = new ResizeObserver(([entry]) => {
       width = entry.contentRect.width;
@@ -140,10 +139,9 @@ export default function AsciiAurora() {
       media.removeEventListener('change', update);
       document.removeEventListener('visibilitychange', update);
     };
-  }, [paused]);
+  }, []);
 
   return <div className="ascii-aurora">
     <canvas ref={canvasRef} role="img" aria-label="ASCII northern lights flowing over a mountain fjord, with a softly lit cabin on the shore." />
-    <button className="aurora-pause" onClick={() => setPaused(!paused)} aria-label={paused ? 'Play aurora animation' : 'Pause aurora animation'} aria-pressed={paused}>{paused ? '[ play ]' : '[ pause ]'}</button>
   </div>;
 }
